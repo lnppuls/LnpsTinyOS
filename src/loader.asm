@@ -1,6 +1,5 @@
 org 0x900
 
-
 jmp protect_mode
 
 gdt:
@@ -21,6 +20,7 @@ lgdt_value:
 	dw $-gdt-1	;高16位表示表的最后一个字节的偏移（表的大小-1） 
 	dd gdt		;低32位表示起始位置（GDT的物理地址）
 
+LOADER_STACK_TOP equ 0x0000
 SELECTOR_CODE	equ	0x0001<<3
 SELECTOR_DATA	equ	0x0002<<3
 SELECTOR_VIDEO	equ	0x0003<<3
@@ -56,3 +56,4 @@ mov byte [gs:0xa6],'o'
 mov byte [gs:0xa8],'d'
 
 jmp $
+
